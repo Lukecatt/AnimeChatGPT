@@ -14,7 +14,11 @@ data_to_pass_in = ""
 
 const configuration = new Configuration({
     organization: "org-pImlxStZ62VuiwR3ZdlisOlg",
+<<<<<<< HEAD
     apiKey: "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",
+=======
+    apiKey: "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",
+>>>>>>> c5320163fd56cf086e72f36bd8b6d01c0efbe1ce
 });
 const openai = new OpenAIApi(configuration);
 
