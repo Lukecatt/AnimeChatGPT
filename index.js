@@ -8,9 +8,13 @@ const cors = require('cors');
 const app = express();
 const port = 3001;
 
+const spawner = require('child_process').spawn;
+
+data_to_pass_in = ""
+
 const configuration = new Configuration({
     organization: "org-pImlxStZ62VuiwR3ZdlisOlg",
-    apiKey: "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",
+    apiKey: "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",
 });
 const openai = new OpenAIApi(configuration);
 
@@ -21,8 +25,11 @@ app.post('/', async (req, res) => {
     const {message} = req.body;
     const response = await openai.createCompletion({
         model: "text-davinci-003",
-        prompt: `Pretend to be a psychiastrist and care for the person by using psychiastist skills${message}`,
-        max_tokens: 300,
+        prompt: `Pretend to be a caring sister and speak like an anime character
+        Sister: Hello
+        Patient: ${message}?
+        Sister:`,
+        max_tokens: 70,
         temperature: 0,
      });
      console.log(response.data)
@@ -31,8 +38,12 @@ app.post('/', async (req, res) => {
             message: response.data.choices[0].text
         });
     }
+    data_to_pass_in = response.data.choices[0].text;
+    const python_process = spawner('python3', ['./getAudio.py', data_to_pass_in]);
+    python_process.stdout.on('data', (data) => {
+        console.log(`${data}`);
+    });
 });
-
 
 
 app.listen(port, () => {

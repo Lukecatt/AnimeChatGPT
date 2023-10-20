@@ -18,7 +18,7 @@ function App() {
   
   return (
     <div className="App">
-      <img id = "background" src = "https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-6/313213085_560354866094016_3323667496409923842_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=iOhsAQ0OeCMAX9UlZK-&_nc_ht=scontent-lga3-1.xx&oh=00_AfBia3kieOa33UwLnhYLvtr1gzTzM0O4vr6yZHaXPjJCCg&oe=63E6A2F0" width={300} height={300}></img>
+      <img id = "background" src = "https://i.pinimg.com/originals/05/8c/39/058c394af48e2d61cb986127fc1e2287.jpg" width={300} height={400}></img>
       <h1>ChatGPT ChatApp</h1>
       <form onSubmit={handleSubmit} onKeyDown={e => {if (e.key === "Enter") handleSubmit(e)}}>
         <textarea value={message} placeholder="Input your question" onChange={(e) => setMessage(e.target.value)}></textarea>
